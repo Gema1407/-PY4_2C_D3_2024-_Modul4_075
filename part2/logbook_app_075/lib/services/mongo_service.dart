@@ -30,8 +30,9 @@ class MongoService {
 
   /// Inisialisasi Koneksi ke MongoDB Atlas
   Future<void> connect() async {
+    final dbUri = dotenv.env['MONGODB_URI'];
     try {
-      final dbUri = dotenv.env['MONGODB_URI'];
+      
       if (dbUri == null) throw Exception("MONGODB_URI tidak ditemukan di .env");
 
       _db = await Db.create(dbUri);
